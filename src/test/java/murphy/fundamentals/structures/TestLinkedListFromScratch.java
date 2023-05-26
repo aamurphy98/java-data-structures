@@ -8,9 +8,9 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestArrayListFromScratch {
+public class TestLinkedListFromScratch {
 
-    private ArrayListFromScratch fromScratch;
+    private LinkedListFromScratch fromScratch;
 
     private static final String STRING_01 = "Bug";
     private static final String STRING_02 = "Kite";
@@ -21,41 +21,24 @@ public class TestArrayListFromScratch {
     private static final String EMPTY_STRING = "";
 
     private void fillArray() {
-        fromScratch = new ArrayListFromScratch(2);
         fromScratch.add(STRING_01);
         fromScratch.add(STRING_02);
         assertEquals(2, fromScratch.size());
-        assertEquals(2, fromScratch.getCapacity());
         assertFalse(fromScratch.isEmpty());
     }
-    
+
     @Before
     public void setUp() {
-        fromScratch = new ArrayListFromScratch();
+        fromScratch = new LinkedListFromScratch();
     }
 
     @Test
     public void testDefaultConstructor() {
-        fromScratch = new ArrayListFromScratch();
-        assertEquals(10, fromScratch.getCapacity());
-        assertEquals(10, fromScratch.getElements().length);
         assertEquals(0, fromScratch.size());
-        assertEquals(null, fromScratch.getElements()[0]);
-        assertTrue(fromScratch.isEmpty());
     }
 
     @Test
-    public void testInitialCapcityConstructor() {
-        fromScratch = new ArrayListFromScratch(17);
-        assertEquals(17, fromScratch.getCapacity());
-        assertEquals(17, fromScratch.getElements().length);
-        assertEquals(0, fromScratch.size());
-        assertEquals(null, fromScratch.getElements()[0]);
-        assertTrue(fromScratch.isEmpty());
-    }
-
-    @Test
-    public void testAddToEndOfArrayWithCapacity() {
+    public void testAddString() {
         fromScratch.add(STRING_01);
         assertEquals(1, fromScratch.size());
         assertEquals(STRING_01, fromScratch.get(0));
@@ -67,17 +50,7 @@ public class TestArrayListFromScratch {
     }
 
     @Test
-    public void testAddToEndOfFullArray() {
-        fillArray();
-        fromScratch.add(STRING_03);
-        assertEquals(3, fromScratch.size());
-        assertEquals(4, fromScratch.getCapacity());
-        assertEquals(4, fromScratch.getElements().length);
-        assertEquals(STRING_03, fromScratch.get(2));
-    }
-
-    @Test
-    public void testAddToMiddleOfArrayWithCapacity() {
+    public void testAddStringAtIndex() {
         fromScratch.add(STRING_01);
         fromScratch.add(STRING_02);
         fromScratch.add(STRING_03);
@@ -85,16 +58,6 @@ public class TestArrayListFromScratch {
 
         fromScratch.add(1, STRING_04);
         assertEquals(4, fromScratch.size());
-        assertEquals(STRING_04, fromScratch.get(1));
-    }
-
-    @Test
-    public void testAddToMiddleOfFullArray() {
-        fillArray();
-        fromScratch.add(1, STRING_04);
-        assertEquals(3, fromScratch.size());
-        assertEquals(4, fromScratch.getCapacity());
-        assertEquals(4, fromScratch.getElements().length);
         assertEquals(STRING_04, fromScratch.get(1));
     }
 
@@ -152,27 +115,11 @@ public class TestArrayListFromScratch {
         fromScratch.add(STRING_04);
 
         assertEquals(4, fromScratch.size());
-        assertEquals(10, fromScratch.getCapacity());
         assertFalse(fromScratch.isEmpty());
 
         fromScratch.clear();
         assertEquals(0, fromScratch.size());
-        assertEquals(10, fromScratch.getCapacity());
         assertTrue(fromScratch.isEmpty());
-        assertEquals(null, fromScratch.getElements()[0]);
-    }
-
-    @Test
-    public void testGetValidIndex() {
-        fromScratch.add(STRING_01);
-        fromScratch.add(STRING_02);
-        fromScratch.add(STRING_03);
-        fromScratch.add(STRING_04);
-
-        assertEquals(STRING_01, fromScratch.get(0));
-        assertEquals(STRING_02, fromScratch.get(1));
-        assertEquals(STRING_03, fromScratch.get(2));
-        assertEquals(STRING_04, fromScratch.get(3));
     }
 
     @Test
@@ -328,8 +275,5 @@ public class TestArrayListFromScratch {
         fromScratch.clear();
 
         assertEquals("[]", fromScratch.toString());
-
     }
-
-
 }
