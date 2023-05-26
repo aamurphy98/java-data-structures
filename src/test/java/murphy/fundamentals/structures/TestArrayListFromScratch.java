@@ -18,9 +18,6 @@ public class TestArrayListFromScratch {
     private static final String STRING_04 = "Dave";
     private static final String STRING_05 = "Lego";
     private static final String STRING_06 = "Water Bottle";
-    private static final String STRING_07 = "Computer";
-    private static final String STRING_08 = "Blanket";
-    private static final String STRING_09 = "Kitten";
     private static final String EMPTY_STRING = "";
 
     private void fillArray() {
