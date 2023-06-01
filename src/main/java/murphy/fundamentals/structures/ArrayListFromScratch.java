@@ -4,7 +4,7 @@ package murphy.fundamentals.structures;
  * A custom ArrayList implementation.
  * 
  * Created By: Aaron Murphy
- * Creadted Date: 05/26/2023
+ * Created Date: 05/26/2023
  */
 public class ArrayListFromScratch {
 
