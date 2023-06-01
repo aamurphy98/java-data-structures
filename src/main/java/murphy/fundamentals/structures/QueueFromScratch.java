@@ -1,9 +1,5 @@
 package murphy.fundamentals.structures;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
-
 /**
  * Custom queue implementation utilizing an internal linked list to provide 
  * queue operations.
