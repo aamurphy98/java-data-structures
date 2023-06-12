@@ -62,6 +62,18 @@ public class TestLinkedListFromScratch {
     }
 
     @Test
+    public void testAddToEndOfArraySpecifyingIndex() {
+        fromScratch.add(STRING_01);
+        fromScratch.add(STRING_02);
+        fromScratch.add(STRING_03);
+        assertEquals(3, fromScratch.size());
+
+        fromScratch.add(3, STRING_04);
+        assertEquals(4, fromScratch.size());
+        assertEquals(STRING_04, fromScratch.get(3));
+    }
+
+    @Test
     public void testAddInvalidIndex() {
         try {
             fromScratch.add(-1, STRING_05);

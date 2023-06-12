@@ -11,10 +11,18 @@ public class LinkedListFromScratch {
     private int size;
     private Node head;
 
+    /**
+     * Create a new empty LinkedList
+     */
     public LinkedListFromScratch() {
         this.size = 0;
     }
 
+    /**
+     * Adds a new string to the end of LinkedList
+     * 
+     * @param s the String to add to the end of the list
+     */
     public void add(String s) {
         if (this.head == null) {
             this.head = new Node(s);
@@ -28,8 +36,17 @@ public class LinkedListFromScratch {
         this.size++;
     }
 
+    /**
+     * Adds a new string at the specified index to the list, moving any list elements at 
+     * or behind the index one to the right (increasing its index by one)
+     * 
+     * @param index the index in the list to insert the new String
+     * @param s the string to add to the list
+     * @throws IndexOutOfBoundsException if the index passed is less than zero or beyond
+     *                                   the size of the existing array
+     */
     public void add(int index, String s) throws IndexOutOfBoundsException {
-        if (index >= 0 && index < this.size) {
+        if (index >= 0 && index <= this.size) {
             Node currentNode = this.head;
             for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.next;
@@ -43,6 +60,13 @@ public class LinkedListFromScratch {
         }
     }
     
+    /**
+     * Sets the list element at the specified index to the String passed in, replacing the 
+     * current list element at that index and maintianing the size of the list
+     * 
+     * @param index the index in the list to set the new String
+     * @param s the new String to set in the list at the specified index
+     */
     public void set(int index, String s) {
         if (index >= 0 && index < this.size) {
             Node currentNode = this.head;
@@ -54,12 +78,22 @@ public class LinkedListFromScratch {
             throw new IndexOutOfBoundsException(index);
         }
     }
-
+    
+    /**
+     * Removes all elements from the list, and resets the size to zero
+     */
     public void clear() {
         this.size = 0;
         this.head = null;
     }
 
+    /**
+     * Retrieves the list element at the specified index
+     * 
+     * @param index the index of the desired list element to return
+     * @return the String stored at the index in the list
+     * @throws IndexOutOfBoundsException if the index passed is not within the bounds of the list
+     */
     public String get(int index) throws IndexOutOfBoundsException {
         if (index >= 0 && index < this.size) {
             Node currentNode = this.head;
@@ -72,6 +106,12 @@ public class LinkedListFromScratch {
         }
     }
 
+    /**
+     * Searches the list for the specified string and returns if the string was found
+     * 
+     * @param s the string to search for in the list
+     * @return true if the list contains the specified string, else false
+     */
     public boolean contains(String s) {
         Node currentNode = this.head;
         while (currentNode != null) {
@@ -83,6 +123,13 @@ public class LinkedListFromScratch {
         return false;
     }
 
+    /**
+     * Removes the specified string from the list, shifting any elements behind the string to 
+     * the left (decreasing the index by one).
+     * 
+     * @param s the string to remove from the list
+     * @return the removed string, or null if the specified string was not found
+     */
     public String remove(String s) {
         if (this.head.data.equals(s)) {
             this.head = this.head.next;
@@ -102,6 +149,14 @@ public class LinkedListFromScratch {
         }
     }
 
+    /**
+     * Removes the string at the specified index from the list, shifting any elements behind the
+     * string to the left (decreasing the index by one).
+     * 
+     * @param index the index of the string to remove
+     * @return the removed string
+     * @throws IndexOutOfBoundsException if the index passed is not within the bounds of the list
+     */
     public String remove(int index) throws IndexOutOfBoundsException{
         if (index == 0) {
             String removed = this.head.data;
@@ -123,6 +178,14 @@ public class LinkedListFromScratch {
         }
     }
 
+    /**
+     * Searches for the specified string and returns the index of the first occurance (lowest
+     * index) in the list
+     * 
+     * @param s the string to find the index of within the list
+     * @return the index of the first occurance of the string within the list, or -1 if the 
+     *         string is not found
+     */
     public int indexOf(String s) {
         int index = 0;
         Node currentNode = this.head;
@@ -136,6 +199,14 @@ public class LinkedListFromScratch {
         return -1;
     }
 
+    /**
+     * Searches for the specified string and returns the index of the last occurance (highest 
+     * index) in the list
+     * 
+     * @param s the string to find the index of within the list
+     * @return the index of the last occurance of the string within the list, or -1 if the
+     *         string is not found
+     */
     public int lastIndexOf(String s) {
         int index = 0;
         int lastIndexOf = -1;
@@ -150,14 +221,29 @@ public class LinkedListFromScratch {
         return lastIndexOf;
     }
 
+    /**
+     * Returns the number of elements in the list
+     * 
+     * @return the number of elements in the list
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Returns if the list is empty
+     * 
+     * @return true if the list has zero elements, or false otherwise
+     */
     public boolean isEmpty() {
         return head == null;
     }
 
+    /**
+     * Creates and returns a string representation of the list and its elements
+     * 
+     * @return a string representation of the list
+     */
     public String toString() {
         String strung = "[";
         Node currentNode = this.head;
@@ -171,6 +257,10 @@ public class LinkedListFromScratch {
         return strung + "]";
     }
 
+    /**
+     * This class represents a single element of the linked list, storing the String and the next Node
+     * in the list
+     */
     private class Node {
         String data;
         Node next;

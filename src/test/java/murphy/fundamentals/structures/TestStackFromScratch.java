@@ -22,10 +22,17 @@ public class TestStackFromScratch {
     }
 
     @Test
+    public void testDefaultConstructor() {
+        fromScratch = new StackFromScratch();
+        assertEquals(10, fromScratch.getCapacity());
+        assertTrue(fromScratch.isEmpty());
+    }
+
+    @Test
     public void testPush() {
         assertTrue(fromScratch.isEmpty());
         assertEquals(0, fromScratch.size());
-
+        assertEquals(3, fromScratch.getCapacity());
         boolean success = fromScratch.push(STRING_01);
 
         assertTrue(success);
